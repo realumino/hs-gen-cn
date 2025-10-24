@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch# -->
+<html class="k-webkit k-webkit141"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <title>进出口税则查询</title>
+    <meta name="SiteName" content="海关进出口商品归类系统三期"><!--网站名称-->
+    <meta name="SiteDomain" content="http://gss.customs.gov.cn"><!--网站域名-->
+    <meta name="SiteIDCode" content=""><!--网站标识-->
+    <meta name="ColumnName" content="税目税号"><!--栏目名称-->
+    <meta name="ColumnType" content="办事服务"><!--栏目类别-->
+    <meta name="ColumnDescription" content="初始化频道：进出口税则查询"><!--栏目描述-->
+    <meta name="ColumnKeywords" content="税则税号"><!--栏目关键词-->
+    <script src="./进出口税则查询_files/ImportKendoUI.js.下載"></script><link href="./进出口税则查询_files/examples-offline.css" rel="stylesheet"><link href="./进出口税则查询_files/kendo.common.min.css" rel="stylesheet"><link href="./进出口税则查询_files/kendo.rtl.min.css" rel="stylesheet"><link href="./进出口税则查询_files/kendo.default.min.css" rel="stylesheet"><link href="./进出口税则查询_files/liustyle.css" rel="stylesheet"><script src="./进出口税则查询_files/jquery.min.js.下載"></script><script src="./进出口税则查询_files/jszip.min.js.下載"></script><script src="./进出口税则查询_files/kendo.all.min.js.下載"></script><script src="./进出口税则查询_files/kendo.culture.zh-CN.min.js.下載"></script><script src="./进出口税则查询_files/kendo.messages.zh-CN.min.js.下載"></script><script src="./进出口税则查询_files/extend.appdialog.js.下載"></script><script src="./进出口税则查询_files/extend.message.js.下載"></script>
+    <script src="./进出口税则查询_files/PopUpWindows.js.下載"></script>
+</head>
+<body>
+    <input name="__RequestVerificationToken" type="hidden" value="_OScyUEt85WqcSxi4FyR5FnzG-xhfyKH9ndaN-_CkHUH_nvYu-FbmncQzXfh4S54tcioL00FR8bgGns1fyZINGlnFZkk6l2pLPdyoCXUVGs1">
+    <div>
+        <div style="margin-left:2px;"><img src="./进出口税则查询_files/sz.jpg" width="93" height="27"></div>
+        <div style="width:100%;height:3px;background-color:#c3c3c3;"></div>
+        <table cellspacing="0" cellpadding="0" border="0" class="tableBorder">
+            <tbody><tr><td colspan="4" style="height:30px;">请在使用前详细阅读<spn onclick="ShowNotify()" style="cursor: pointer;">“查询说明”</spn></td></tr>
+            <tr>
+                <td bgcolor="#e7f0f6">
+                    税则号列：
+                </td>
+                <td>
+                    <input type="text" id="txt_Code_Ts_S" class="k-textbox">
+                </td>
+                <td bgcolor="#e7f0f6">
+                    货品名称:
+                </td>
+                <td>
+                    <input type="text" id="txt_G_Name" class="k-textbox">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align:center;">
+                    <button id="btnSeach" class="k-button" onclick="OnSeachClick()">查询</button>&nbsp;
+                    <button id="btnSeach" class="k-button" onclick="OnReSetClick()">重置</button>&nbsp;
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+    <div id="grid" data-role="grid" class="k-grid k-widget k-display-block k-editable" style="height: 600px;"><div class="k-grid-header" style="padding-right: 15px;"><div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable"><table role="grid"><colgroup><col><col><col><col><col><col></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="CODE_TS_S" aria-haspopup="true" rowspan="1" data-title="税则号列" data-index="0" id="9ffc71a5-4d97-47db-baaa-04742c0905cc" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">税则号列</a></th><th scope="col" role="columnheader" data-field="G_NAME" aria-haspopup="true" rowspan="1" data-title="货品名称" data-index="1" id="aab8f773-a0bc-47f4-9224-8ee102a8b7d7" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">货品名称</a></th><th scope="col" role="columnheader" data-field="MFN_RATE" aria-haspopup="true" rowspan="1" data-title="最惠国税率" data-index="2" id="05bedc8d-a515-469c-a92c-a5382737457c" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">最惠国税率</a></th><th scope="col" role="columnheader" data-field="COMM_RATE" aria-haspopup="true" rowspan="1" data-title="普通税率" data-index="3" id="410b1ef6-8db3-4f38-a945-3065aa38f1c8" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">普通税率</a></th><th scope="col" role="columnheader" data-field="EXPORT_RATE" aria-haspopup="true" rowspan="1" data-title="出口税率" data-index="4" id="dcf89f13-b4b5-42a7-9aa8-4afc5fd4abc8" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">出口税率</a></th><th scope="col" role="columnheader" data-field="TEMPORARY_RATE" aria-haspopup="true" rowspan="1" data-title="暂定税率" data-index="5" id="1ca07d1f-d1bb-4721-9163-07335074a923" class="k-header" data-role="columnsorter"><a class="k-link" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#">暂定税率</a></th></tr></thead></table><div class="k-resize-handle" style="top: 0px; left: 726px; height: 31px; width: 9px; display: block;"><div class="k-resize-handle-inner"></div></div></div></div><div class="k-grid-content k-auto-scrollable" style="height: 530px;"><table role="grid" style="height: auto;" data-role="selectable" class="k-selectable"><colgroup><col><col><col><col><col><col></colgroup><tbody role="rowgroup"><tr data-uid="25597751-a023-475e-819d-8169fe83436a" role="row"><td role="gridcell">0101</td><td role="gridcell">马、驴、骡：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="9204f663-25a8-489c-8158-3c1335e4bf3c" role="row"><td role="gridcell">01012</td><td role="gridcell">-马：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="00474d4e-fbe5-4f1e-9632-ac9cfbbf911a" role="row"><td role="gridcell">01012100</td><td role="gridcell">--改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="aa9c67f1-ff03-4233-ac73-a38832d8342f" role="row"><td role="gridcell">01012900</td><td role="gridcell">--其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="02678328-f547-4acb-9843-a7b1580749fd" role="row"><td role="gridcell">01013</td><td role="gridcell">-驴：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="bb9e30bd-50cc-4ebd-a31c-d67c4386a87d" role="row"><td role="gridcell">01013010</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="6f3ae461-258d-4825-ad8d-527c9b1a3bdf" role="row"><td role="gridcell">01013090</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="80076b5c-2df3-438a-80c8-205c4a2214c9" role="row"><td role="gridcell">01019000</td><td role="gridcell">-其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="773b320e-656c-4cfc-afd9-97c0d0a45ccf" role="row"><td role="gridcell">0102</td><td role="gridcell">牛：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="2babf177-7562-470d-8ffd-933dc6874f3f" role="row"><td role="gridcell">01022</td><td role="gridcell">-家牛：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="ba5201ac-2f63-435f-9a82-1bbe60d4d1a5" role="row"><td role="gridcell">01022100</td><td role="gridcell">--改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="b36d8c63-405a-429e-810a-08d883d2dd39" role="row"><td role="gridcell">01022900</td><td role="gridcell">--其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="84dce1c6-46cd-47ae-b12d-2c6ed9d77ba7" role="row"><td role="gridcell">01023</td><td role="gridcell">-水牛：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="a9b460ee-d1ad-4e80-b206-ac05e57ccf67" role="row"><td role="gridcell">01023100</td><td role="gridcell">--改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="0926b408-c574-4e3c-8e0e-9cd07d8700e2" role="row"><td role="gridcell">01023900</td><td role="gridcell">--其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="b5a246f6-5ee5-4bcb-a538-11fa87505706" role="row"><td role="gridcell">01029</td><td role="gridcell">-其他：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="6fe23bc8-1d95-471b-bfe3-568da0ec20d1" role="row"><td role="gridcell">01029010</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="dd613440-6dab-4b9d-9552-e3562fd623aa" role="row"><td role="gridcell">01029090</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">30</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="0a610bb7-4511-4111-bae9-7326a68d4434" role="row"><td role="gridcell">0103</td><td role="gridcell">猪：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="b72c25c6-17c4-4a2d-9686-52661573dfe8" role="row"><td role="gridcell">01031000</td><td role="gridcell">-改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="d0f125c9-31c3-4e43-bf9b-c0d609badfbd" role="row"><td role="gridcell">01039</td><td role="gridcell">-其他：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="7857f781-02c2-4d38-bc5f-4d5c9b3f23c9" role="row"><td role="gridcell">010391</td><td role="gridcell">--重量在50千克以下：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="4672a3e6-6b8c-4f42-bdcc-56766122737e" role="row"><td role="gridcell">01039110</td><td role="gridcell">---重量在10千克以下</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="d5b7b2c1-1e59-467b-9604-9b1e91aac3bd" role="row"><td role="gridcell">01039120</td><td role="gridcell">---重量在10千克及以上，但在50千克以下</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="8d91dd6a-7b9f-4eb7-9e5c-785ae2d4f776" role="row"><td role="gridcell">01039200</td><td role="gridcell">--重量在50千克及以上</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="1c4a398f-6cb0-40f2-b4c1-e37be3f0bc44" role="row"><td role="gridcell">0104</td><td role="gridcell">绵羊、山羊：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="03ef5ce1-d1f1-4ae6-8598-aac15d821cd5" role="row"><td role="gridcell">01041</td><td role="gridcell">-绵羊：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="8b6895ed-52ad-43d0-96bb-66496fff89f2" role="row"><td role="gridcell">01041010</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="1b6d0c26-3c9d-467f-bb7d-cd8d8bc1b085" role="row"><td role="gridcell">01041090</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="fb049692-d009-407f-a87a-8cdfa4184b2a" role="row"><td role="gridcell">01042</td><td role="gridcell">-山羊：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="57219497-3273-49a3-a7ee-5aef6c4315da" role="row"><td role="gridcell">01042010</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="9c40d95e-860c-4de1-860c-a5ebd2e95396" role="row"><td role="gridcell">01042090</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="5638aafe-4b73-46a4-ad42-27923aee9c6b" role="row"><td role="gridcell">0105</td><td role="gridcell">家禽，即鸡、鸭、鹅、火鸡及珍珠鸡：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="02c52258-a68d-4615-a9ea-2ce3c050415e" role="row"><td role="gridcell">01051</td><td role="gridcell">-重量不超过185克：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="34c911fe-8e00-4678-9261-c710a8773c66" role="row"><td role="gridcell">010511</td><td role="gridcell">--鸡：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="c7bfd6e8-7217-4843-9450-647d1572123c" role="row"><td role="gridcell">01051110</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="fb31118d-0daf-4b7f-8167-9cd40e2b67c8" role="row"><td role="gridcell">01051190</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="53c827ef-c75f-4de1-a351-cb0c6bee714f" role="row"><td role="gridcell">010512</td><td role="gridcell">--火鸡：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="e1ddb1b8-a25f-435c-a182-76fbe34175a2" role="row"><td role="gridcell">01051210</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="bae2ddd8-7864-4fae-9690-81c5f64e7b97" role="row"><td role="gridcell">01051290</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="d98fd7bb-6de4-458d-9015-e9c1764faceb" role="row"><td role="gridcell">010513</td><td role="gridcell">--鸭：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="a8c025e6-fa09-4272-abf2-c923c5432644" role="row"><td role="gridcell">01051310</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="944f3a2f-4201-48fb-ac4d-4b3faaacdd34" role="row"><td role="gridcell">01051390</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="b24bebb6-4f6e-4bdf-85e0-6468fb684f39" role="row"><td role="gridcell">010514</td><td role="gridcell">--鹅：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="ed54df0a-04b2-45a6-8b9b-0a1034eeb3bd" role="row"><td role="gridcell">01051410</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="73beb9e8-6a8c-4c59-a827-7c7c2ea0413e" role="row"><td role="gridcell">01051490</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="4ba2de80-aa94-4f12-92d2-478e39305aee" role="row"><td role="gridcell">010515</td><td role="gridcell">--珍珠鸡：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="7277f3e9-68ef-4064-91dd-50375ccb04c1" role="row"><td role="gridcell">01051510</td><td role="gridcell">---改良种用</td><td role="gridcell">0</td><td role="gridcell">0</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr data-uid="1f76500a-12f3-44fb-b841-8f0c0d011787" role="row"><td role="gridcell">01051590</td><td role="gridcell">---其他</td><td role="gridcell">10</td><td role="gridcell">50</td><td role="gridcell"></td><td role="gridcell"></td></tr><tr class="k-alt" data-uid="578fec14-8b17-4ce8-84c3-151828f2c162" role="row"><td role="gridcell">01059</td><td role="gridcell">-其他：</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td></tr></tbody></table></div><div class="k-pager-wrap k-grid-pager k-widget k-floatwrap" data-role="pager"><a href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" aria-label="首页" title="首页" class="k-link k-pager-nav k-pager-first k-state-disabled" data-page="1" tabindex="-1"><span class="k-icon k-i-arrow-end-left"></span></a><a href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" aria-label="上一页" title="上一页" class="k-link k-pager-nav k-state-disabled" data-page="1" tabindex="-1"><span class="k-icon k-i-arrow-60-left"></span></a><ul class="k-pager-numbers k-reset"><li class="k-current-page"><span class="k-link k-pager-nav">1</span></li><li><span class="k-state-selected">1</span></li><li><a tabindex="-1" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-link" data-page="2">2</a></li><li><a tabindex="-1" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-link" data-page="3">3</a></li><li><a tabindex="-1" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-link" data-page="4">4</a></li><li><a tabindex="-1" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-link" data-page="5">5</a></li><li><a tabindex="-1" href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-link" data-page="6" title="更多...">...</a></li></ul><span class="k-pager-input k-label">转到第<input class="k-textbox" aria-label="1">页　共 267 页</span><a href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" aria-label="下一页" title="下一页" class="k-link k-pager-nav" data-page="2" tabindex="-1"><span class="k-icon k-i-arrow-60-right"></span></a><a href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" aria-label="末页" title="末页" class="k-link k-pager-nav k-pager-last" data-page="267" tabindex="-1"><span class="k-icon k-i-arrow-end-right"></span></a><span class="k-pager-sizes k-label"><span title="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" style="" tabindex="0" aria-owns="" aria-live="polite" aria-disabled="false" aria-busy="false" aria-activedescendant="8aec48a4-d5cd-459f-9bcd-32aa127491b6"><span unselectable="on" class="k-dropdown-wrap k-state-default k-state-focused"><span unselectable="on" class="k-input">50</span><span unselectable="on" class="k-select" aria-label="select"><span class="k-icon k-i-arrow-60-down"></span></span></span><select data-role="dropdownlist" style="display: none;" aria-label="50"><option value="10">10</option><option value="20" selected="selected">20</option><option value="50">50</option></select></span>条每页</span><a href="http://gss.customs.gov.cn/clsouter2020/Home/TariffContentSearch#" class="k-pager-refresh k-link" title="刷新" aria-label="刷新"><span class="k-icon k-i-reload"></span></a><span class="k-pager-info k-label">1 - 50 条　共 13302 条数据</span></div></div>
+
+
+<script>
+
+    $(document).ready(function () {
+	setInterval('UpdatePage()', 300000);
+        //注意：数据源字段中不能含有“data”，否则绑定时不显示，也不报错
+        var dataSource1 = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/CLSouter2020/TariffContent/GetQueryTaxNum",
+                    type: "post",
+                    dataType: "json"
+                },
+                //往后台传递参数的
+                parameterMap: function (options, operation) {
+                    if (operation == "read") {
+                        var parameter = {
+                            __RequestVerificationToken: $("*[name='__RequestVerificationToken']").val(),
+                            page: options.page,
+                            pageSize: options.pageSize,
+                            Code_Ts_S: function () {
+                                return encodeURI($("#txt_Code_Ts_S").val());
+                            },
+                            G_Name: function () {
+                                return encodeURI($("#txt_G_Name").val());
+                            }
+                        }
+                        return parameter;
+                    }
+                }
+            },
+            batch: true,
+            pageSize: 20,
+            serverPaging: true,
+            serverFiltering: true,          
+            schema: {
+                data: function (d) {
+                    return d.data;
+                },
+                total: function (d) {
+                    return d.total;
+                },
+                model: {
+                    id: "GUID",
+                    fields: {
+                        ArriveData: { type: "date" },
+                        HandleTime: { type: "date" }
+                    }
+                }
+            }
+        });
+
+        //初始化grid
+        var mygrid = $("#grid").kendoGrid({
+            dataSource: dataSource1,
+            height: 600,
+            selectable: "row", //选择单元格是cell    "multiple row"是选择多条row
+            pageable: {
+                input: true,
+                refresh: true,
+                pageSizes: true,
+                buttonCount: 5,
+                page: 1,
+                pageSize: 20,
+                pageSizes: [10, 20, 50]
+            },
+            sortable: true,
+            //groupable: true,  //拖拽表头自动分组
+            columns: [
+                { field: "CODE_TS_S", title: "税则号列" },
+                { field: "G_NAME", title: "货品名称" },
+                { field: "MFN_RATE", title: "最惠国税率" },
+                { field: "COMM_RATE", title: "普通税率" },
+                { field: "EXPORT_RATE", title: "出口税率" },
+                { field: "TEMPORARY_RATE", title: "暂定税率" },
+            ],
+            resizable: true,
+            editable: { mode: 'inline' }//行编辑
+        });
+
+    });
+
+
+
+    function OnSeachClick() {
+        //重新读取数据
+        var grid = $("#grid").data("kendoGrid");
+        grid.dataSource.read();
+        grid.dataSource.page(1);
+    }
+
+    function OnReSetClick() {
+        $("#txt_Code_Ts_S").val("");
+        $("#txt_G_Name").val("");
+    }
+
+    function ShowNotify() {
+        var random = Math.random();
+        var url = "/CLSouter2020/Home/ClassifyQueryNotify?random=" + random;
+        showNewWindows(800, 600, url);
+    }
+</script>
+
+<div class="k-animation-container" style="width: 59px; height: 82px; box-sizing: content-box; overflow: hidden; display: none; position: absolute; top: 738.078px; z-index: 10002; left: 539.531px;" aria-hidden="true"><div class="k-list-container k-popup k-group k-reset" data-role="popup" aria-hidden="true" style="position: absolute; font-size: 13px; font-family: 宋体; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: normal; width: 52.5px; min-width: 52.5px; white-space: normal; height: auto; display: none; transform: translateY(-82px);"><div class="k-group-header" style="display:none"></div><div class="k-list-scroller" unselectable="on" style="height: auto;"><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" aria-live="off" data-role="staticlist" role="listbox"><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">10</li><li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">20</li><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" aria-selected="true" data-offset-index="2" id="8aec48a4-d5cd-459f-9bcd-32aa127491b6">50</li></ul></div><div class="k-nodata" style="display:none"><div>No data found.</div></div></div></div></body></html>
