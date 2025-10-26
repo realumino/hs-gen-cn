@@ -112,26 +112,16 @@ class DownloadExec:
             print(f"等待 {wait_time:.1f} 秒后继续...")
             time.sleep(wait_time)
 
-    def download_single_item(self, item):
+    def download_single_item(self, item, folder_path, file_name):
         """
-        下载单个条目内容
+        下载单个条目内容到指定路径
         
         :param item: 包含number, name, url的字典
+        :param folder_path: 下载文件的文件夹路径
+        :param file_name: 下载文件的名称
         :return: 下载是否成功
         """
-        number = item['number']
-        name = item['name']
         url = item['url']
-        
-        # 创建子文件夹
-        folder_name = f"{number}-{name}"
-        folder_path = os.path.join(self.base_dataset_path, folder_name)
-        
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-            print(f"创建子文件夹: {folder_path}")
-        else:
-            print(f"子文件夹已存在: {folder_path}")
         
         # 请求前等待
         self._wait_before_request()
@@ -155,7 +145,6 @@ class DownloadExec:
                 raise Exception(f"HTTP {response.status_code}")
             
             # 保存网页内容
-            file_name = f"{number}-{name}.html"
             file_path = os.path.join(folder_path, file_name)
             
             with open(file_path, 'w', encoding='utf-8') as f:

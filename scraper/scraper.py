@@ -153,8 +153,21 @@ class HSScraper:
                         
                         print(f"找到符合条件的条目: {tariff_no} - {tariff_name}")
                         
+                        # 创建子文件夹
+                        folder_name = f"{formatted_number}-{tariff_name}"
+                        folder_path = os.path.join(self.dataset_path, folder_name)
+                        
+                        if not os.path.exists(folder_path):
+                            os.makedirs(folder_path)
+                            print(f"创建子文件夹: {folder_path}")
+                        else:
+                            print(f"子文件夹已存在: {folder_path}")
+                        
+                        # 构造文件名
+                        file_name = f"{formatted_number}-{tariff_name}.html"
+                        
                         # 使用DownloadExec类下载该条目
-                        self.download_exec.download_single_item(item)
+                        self.download_exec.download_single_item(item, folder_path, file_name)
             
             # 如果当前页没有符合条件的内容，则停止翻页
             if not current_page_has_ch_items:
