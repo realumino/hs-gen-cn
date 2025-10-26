@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.service import Service
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from download_exec import DownloadExec
+from DownloadExec import DownloadExec
 
 
 class HSScraper:
