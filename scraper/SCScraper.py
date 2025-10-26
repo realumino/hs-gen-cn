@@ -197,6 +197,7 @@ class SSScraper:
             # 如果当前页没有符合条件的内容，继续翻页
             if not current_page_has_sc_items:
                 print(f"第 {page_num-1} 页没有符合条件的内容，继续翻页")
+                break
         
         print("所有条目处理完成")
     
