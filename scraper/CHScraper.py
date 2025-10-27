@@ -13,6 +13,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from DownloadExec import DownloadExec
 from ChroSelHandler import ChroHand, SelHand
+from Trunc import truncate_filename
 
 
 class HSScraper:
@@ -138,7 +139,7 @@ class HSScraper:
                         # 创建子文件夹
                         folder_name = f"{formatted_number}-{tariff_name}"
                         # 截断文件夹名以符合操作系统限制
-                        folder_name = self._truncate_filename(folder_name)
+                        folder_name = truncate_filename(folder_name)
                         folder_path = os.path.join(self.dataset_path, folder_name)
                         
                         if not os.path.exists(folder_path):
@@ -150,7 +151,7 @@ class HSScraper:
                         # 构造文件名
                         file_name = f"{formatted_number}-{tariff_name}.html"
                         # 截断文件名以符合操作系统限制
-                        file_name = self._truncate_filename(file_name)
+                        file_name = truncate_filename(file_name)
                         
                         file_path = os.path.join(folder_path, file_name)
                         if os.path.exists(file_path):
@@ -179,35 +180,6 @@ class HSScraper:
                 break
         
         print("所有条目处理完成")
-    
-    def _truncate_filename(self, filename, max_length=200):
-        """
-        截断文件名以符合Windows和Linux的文件名长度限制
-        取Windows(260)和Linux(255)中最小者减去4，即251个字符
-        
-        :param filename: 原始文件名
-        :param max_length: 最大字符数
-        :return: 截断后的文件名
-        """
-        if len(filename) <= max_length:
-            return filename
-        
-        # 保留文件扩展名（如果有的话）
-        if '.' in filename and not filename.startswith('.'):
-            name_part, ext_part = filename.rsplit('.', 1)
-            ext_part = '.' + ext_part
-            
-            # 计算文件名部分的最大长度
-            max_name_length = max_length - len(ext_part)
-            if max_name_length > 0:
-                truncated_name = name_part[:max_name_length]
-                return truncated_name + ext_part
-            else:
-                # 如果扩展名本身就超过了最大长度，则只返回截断的扩展名
-                return ext_part[:max_length]
-        else:
-            # 没有扩展名的情况
-            return filename[:max_length]
     
     def close_browser(self):
         """关闭浏览器"""
