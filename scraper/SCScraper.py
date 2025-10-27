@@ -27,7 +27,7 @@ class SSScraper:
         """
         self.base_dir = os.path.dirname(os.path.abspath(__file__))
         self.dataset_dir = dataset_dir
-        self.dataset_path = os.path.join(self.base_dir, '..', dataset_dir)
+        self.dataset_path = os.path.join(self.base_dir, '.', dataset_dir)
         self.target_url = "http://gss.customs.gov.cn/clsouter2020/Home/TariffCommentarySearch"
         self.ch_items = []
         
@@ -146,7 +146,7 @@ class SSScraper:
                         print(f"找到匹配的章节目录: {sub_dir}")
                         
                         # 文件夹命名格式为"子目号列-子目条文"
-                        folder_name = f"{sc_number}-{tariff_name}"
+                        folder_name = f"{sc_number}"
                         # 截断文件夹名以符合操作系统限制
                         folder_name = truncate_filename(folder_name)
                         folder_path = os.path.join(sub_dir, folder_name)
@@ -172,7 +172,7 @@ class SSScraper:
                         print(f"找到符合条件的条目: {tariff_no} - {tariff_name}")
                         
                         # 文件命名格式为"子目号列-子目条文.html"
-                        file_name = f"{sc_number}-{tariff_name}.html"
+                        file_name = f"{sc_number}.html"
                         # 截断文件名以符合操作系统限制
                         file_name = truncate_filename(file_name)
                         
@@ -183,6 +183,24 @@ class SSScraper:
                         else:
                             # 使用DownloadExec类下载该条目
                             self.download_exec.download_single_item(item, folder_path, file_name)
+                            # 创建Section{prefix}Chapter{(sc_number[2:])}DB.csv文件并写入记录
+                            csv_filename = f"Section{prefix}ChapterDB.csv"
+                            csv_path = os.path.join(sub_dir, csv_filename)
+                        
+                            # 处理特殊字符：如果tariff_name包含逗号或双引号，需要用双引号包围并转义双引号
+                            if ',' in tariff_name or '"' in tariff_name:
+                            # 转义双引号并用双引号包围
+                                escaped_name = '"' + tariff_name.replace('"', '""') + '"'
+                            else:
+                                escaped_name = tariff_name
+                        
+                             # 构造CSV记录行
+                            csv_line = f"{sc_number},{escaped_name},{detail_url}\n"
+                        
+                            # 写入CSV文件
+                            with open(csv_path, 'a', encoding='utf-8') as csv_file:
+                                csv_file.write(csv_line)
+                            print(f"已将条目写入CSV文件: {csv_path}")
             
             # 向后翻页
             page_num = page_num + 1

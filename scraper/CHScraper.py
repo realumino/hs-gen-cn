@@ -26,7 +26,7 @@ class HSScraper:
         """
         self.base_dir = os.path.dirname(os.path.abspath(__file__))
         self.dataset_dir = dataset_dir
-        self.dataset_path = os.path.join(self.base_dir, '..', dataset_dir)
+        self.dataset_path = os.path.join(self.base_dir, '.', dataset_dir)
         self.target_url = "http://gss.customs.gov.cn/clsouter2020/Home/TariffCommentarySearch"
         self.ch_items = []
         
@@ -39,12 +39,27 @@ class HSScraper:
         self.download_exec = DownloadExec(self.dataset_path)
     
     def create_dataset_directory(self):
-        """创建数据集目录"""
+        """创建数据集目录并初始化SectionDB.csv文件"""
         if not os.path.exists(self.dataset_path):
             os.makedirs(self.dataset_path)
             print(f"创建目录: {self.dataset_path}")
+            
+            # 创建SectionDB.csv文件
+            csv_path = os.path.join(self.dataset_path, "SectionDB.csv")
+            with open(csv_path, 'w', encoding='utf-8') as f:
+                f.write("")
+            print(f"创建SectionDB.csv文件: {csv_path}")
         else:
             print(f"目录已存在: {self.dataset_path}")
+            
+            # 检查SectionDB.csv文件是否存在，如果不存在则创建
+            csv_path = os.path.join(self.dataset_path, "SectionDB.csv")
+            if not os.path.exists(csv_path):
+                with open(csv_path, 'w', encoding='utf-8') as f:
+                    f.write("章节编号,章节名称,链接地址\n")
+                print(f"创建SectionDB.csv文件: {csv_path}")
+            else:
+                print("SectionDB.csv文件已存在")
     
     def init_webdriver(self):
         """初始化WebDriver"""
@@ -136,8 +151,18 @@ class HSScraper:
                         
                         print(f"找到符合条件的条目: {tariff_no} - {tariff_name}")
                         
+                        # 将章节信息写入SectionDB.csv文件
+                        csv_path = os.path.join(self.dataset_path, "SectionDB.csv")
+                        with open(csv_path, 'a', encoding='utf-8') as f:
+                            # 转义可能包含逗号的章节名称
+                            escaped_name = tariff_name.replace('"', '""')  # 双引号转义
+                            if ',' in tariff_name or '"' in tariff_name:
+                                escaped_name = f'"{escaped_name}"'  # 如果包含逗号或双引号，用双引号包围
+                            f.write(f"{formatted_number},{escaped_name},{detail_url}\n")
+                        print(f"已将章节信息写入SectionDB.csv: {formatted_number} - {tariff_name}")
+                        
                         # 创建子文件夹
-                        folder_name = f"{formatted_number}-{tariff_name}"
+                        folder_name = f"{formatted_number}"
                         # 截断文件夹名以符合操作系统限制
                         folder_name = truncate_filename(folder_name)
                         folder_path = os.path.join(self.dataset_path, folder_name)
@@ -149,7 +174,7 @@ class HSScraper:
                             print(f"子文件夹已存在: {folder_path}")
                         
                         # 构造文件名
-                        file_name = f"{formatted_number}-{tariff_name}.html"
+                        file_name = f"{formatted_number}.html"
                         # 截断文件名以符合操作系统限制
                         file_name = truncate_filename(file_name)
                         
