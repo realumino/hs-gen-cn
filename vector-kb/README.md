@@ -128,6 +128,30 @@ results = vkb.query("商品归类规则", top_k=5, where={"chapter": "45", "is_d
 **返回:**
 - 删除的chunk数量
 
+### list()
+
+列出知识库中的所有文件及其 chunk 数量。
+
+**返回:**
+```python
+[
+    {
+        "file_id": "文件唯一标识符",
+        "source_file": "源文件名",
+        "chunk_count": 该文件的chunk数量
+    },
+    ...
+]
+```
+
+**示例:**
+```python
+# 列出所有文件
+files = vkb.list()
+for file in files:
+    print(f"文件: {file['source_file']}, chunks: {file['chunk_count']}")
+```
+
 ## 目录结构
 
 ```

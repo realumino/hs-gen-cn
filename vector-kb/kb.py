@@ -128,22 +128,40 @@ class kb:
         
         # 读取文件内容
         content = ""
-        if ext == '.txt':
-            with open(filepath, 'r', encoding='utf-8') as f:
-                content = f.read()
-        elif ext == '.pdf':
-            with open(filepath, 'rb') as f:
-                pdf_reader = PyPDF2.PdfReader(f)
+        try:
+            if ext == '.txt':
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    content = f.read()
+            elif ext == '.pdf':
+                with open(filepath, 'rb') as f:
+                    pdf_reader = PyPDF2.PdfReader(f)
+                    content = ""
+                    for page in pdf_reader.pages:
+                        content += page.extract_text()
+            elif ext == '.docx':
+                doc = Document(filepath)
                 content = ""
-                for page in pdf_reader.pages:
-                    content += page.extract_text()
-        elif ext == '.docx':
-            doc = Document(filepath)
-            content = ""
-            for paragraph in doc.paragraphs:
-                content += paragraph.text + "\n"
-        else:
-            raise ValueError(f"不支持的文件格式: {ext}")
+                for paragraph in doc.paragraphs:
+                    content += paragraph.text + "\n"
+            else:
+                # 尝试以文本文件方式读取所有其他类型的文件
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    content = f.read()
+        except UnicodeDecodeError:
+            # 如果UTF-8解码失败，尝试使用其他编码或以二进制方式读取
+            try:
+                with open(filepath, 'r', encoding='gbk') as f:
+                    content = f.read()
+            except UnicodeDecodeError:
+                # 如果仍然失败，以二进制方式读取并尝试解码
+                with open(filepath, 'rb') as f:
+                    content = f.read().decode('utf-8', errors='ignore')
+        except Exception as e:
+            # 处理其他可能的异常
+            print(f"读取文件 {filepath} 时出现错误: {str(e)}")
+            # 尝试以二进制方式读取并忽略错误
+            with open(filepath, 'rb') as f:
+                content = f.read().decode('utf-8', errors='ignore')
         
         # 获取分块大小
         chunk_size = self.properties.get('chunk_size', 500)
@@ -166,11 +184,9 @@ class kb:
             metadata: 文件元数据
                 section: 两位数字（必须）
                 chapter: 两位数字（可选）
-                is_detailed: bool 值（可选）
+                is_section_db: bool 值（可选）
+                is_chapter_db: bool 值（可选）
         """
-        # 验证必要元数据
-        if 'section' not in metadata:
-            raise ValueError("必须提供 section 元数据")
         
         # 解析文件
         chunks = self._parser(filepath)
@@ -228,6 +244,45 @@ class kb:
           else:
               return 0  # 没有找到匹配的文件
       
+    def list(self) -> List[Dict[str, Any]]:
+        """
+        列出知识库中的所有文件及其 chunk 数量
+        
+        Returns:
+            包含文件信息的列表，每个元素包含：
+                - file_id: 文件唯一标识符
+                - source_file: 源文件名
+                - chunk_count: 该文件的 chunk 数量
+        """
+        # 获取所有文档的元数据
+        results = self.collection.get(include=['metadatas'])
+        
+        # 如果没有文档，返回空列表
+        if not results or not results['ids']:
+            return []
+        
+        # 统计每个文件的 chunk 数量
+        file_stats = {}
+        
+        # 遍历所有文档的元数据
+        for metadata in results['metadatas']:
+            file_id = metadata.get('file_id')
+            source_file = metadata.get('source_file')
+            
+            # 如果这是第一次遇到这个文件，初始化统计数据
+            if file_id not in file_stats:
+                file_stats[file_id] = {
+                    'file_id': file_id,
+                    'source_file': source_file,
+                    'chunk_count': 0
+                }
+            
+            # 增加该文件的 chunk 计数
+            file_stats[file_id]['chunk_count'] += 1
+        
+        # 将统计结果转换为列表并返回
+        return list(file_stats.values())
+    
     def query(self, text: str, top_k: int = 5, where: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
         """
         输入自然语言查询字符串
